@@ -92,11 +92,13 @@ def plot_Smit2(Z0, gamma_0, gamma_coupled, f, f0):
         draw_labels=True
     )
 
+    '''
     ax.plot(    
         gamma_0.real,
         gamma_0.imag,
         label="Антенна без катушки"
     )
+    '''
 
     # Центральная частота
     idx = np.argmin(np.abs(f - f0))
@@ -114,11 +116,13 @@ def plot_Smit2(Z0, gamma_0, gamma_coupled, f, f0):
         "s",
         label="433 МГц с катушкой"
     )
+    '''
     ax.plot(
         gamma_coupled.real,
         gamma_coupled.imag,
         label="Антенна с катушкой"
     )
+    '''
    # ax.legend()
    # ax.set_title("Влияние катушки на согласование UHF-антенны")
     return fig

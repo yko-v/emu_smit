@@ -130,15 +130,37 @@ k = st.sidebar.slider(
     step=0.01
 )
 
-L_ant = 100e-9
+R_ant = st.sidebar.slider(
+    "Сопротивление R, Ом",
+    min_value=1.0,
+    max_value=100.0,
+    value=10.0,
+    step=0.5,
+    key='antenna',
+)
+
+
+L_ant = st.sidebar.slider(
+    "Индуктивность L, нГн",
+    min_value=1.0,
+    max_value=200.0,
+    value=100.0,
+    step=0.5
+) * 1e-9
+
+C_ant = st.sidebar.slider(
+    "Емкость C, пФ",
+    min_value=1.0,
+    max_value=10.0,
+    value= 1.35, #1 / ((2 * np.pi * f0)**2 * L_ant) / 1e-12,
+    step=0.1
+) * 1e-12
+
+
 w = 2 * np.pi * f_ant
 
 # Параметры антенны
 Z0 = 50
-R_ant = R
-L_ant = 100e-9
-C_ant = 1 / ((2 * np.pi * f0)**2 * L_ant)
-
 
 gamma, Z = get_g(R, f_ant, L, Z0)
 
